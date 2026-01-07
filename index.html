@@ -1,229 +1,307 @@
-
 <!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi Nativ | Cita Rasa Asli Nusantara</title>
-    <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-    
+    <title>Kopi Zee - Nikmati Setiap Tegukan</title>
     <style>
-        /* --- RESET & BASIC STYLES --- */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; line-height: 1.6; color: #333; background-color: #fafafa; }
-        h1, h2, h3 { font-family: 'Lora', serif; color: #4b3621; }
-        a { text-decoration: none; color: inherit; transition: 0.3s; }
-        ul { list-style: none; }
-        img { max-width: 100%; display: block; }
+        /* --- RESET & BASIC STYLE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: #fcf9f2; color: #333; line-height: 1.6; }
+        a { text-decoration: none; color: inherit; }
 
-        /* --- VARIABLES --- */
+        /* --- COLORS --- */
         :root {
-            --primary: #4b3621; /* Coffee Brown */
-            --secondary: #d4a373; /* Latte */
-            --accent: #bc6c25; /* Roast Orange */
-            --light: #fefae0; /* Cream */
+            --primary: #6f4e37; /* Coffee Brown */
+            --secondary: #cba277; /* Latte */
+            --light: #fcf9f2; /* Cream */
+            --dark: #2c1a12; /* Dark Roast */
             --white: #ffffff;
         }
 
-        /* --- NAVIGATION --- */
-        nav {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 1.5rem 5%; background-color: var(--white);
-            position: fixed; width: 100%; top: 0; z-index: 1000;
+        /* --- HEADER --- */
+        header {
+            background-color: var(--white);
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--primary); letter-spacing: 1px; }
-        .nav-links { display: flex; gap: 2rem; }
-        .nav-links a { font-weight: 500; color: var(--primary); }
-        .nav-links a:hover { color: var(--accent); }
-        .btn-cta {
-            background-color: var(--primary); color: var(--white);
-            padding: 0.7rem 1.5rem; border-radius: 30px; font-weight: 600;
-        }
-        .btn-cta:hover { background-color: var(--accent); transform: translateY(-2px); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .social-link { color: var(--primary); font-weight: 600; }
 
         /* --- HERO SECTION --- */
         .hero {
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1951&q=80');
-            background-size: cover; background-position: center;
-            display: flex; flex-direction: column; justify-content: center; align-items: center;
-            text-align: center; color: var(--white); padding: 0 20px;
-            margin-top: 60px;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
         }
-        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; color: var(--light); }
-        .hero p { font-size: 1.2rem; max-width: 600px; margin-bottom: 2rem; font-weight: 300; }
-        .hero-btn {
-            background-color: var(--accent); color: var(--white);
-            padding: 1rem 2.5rem; font-size: 1.1rem; border-radius: 5px;
-            font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
+        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; }
+        .btn-cta {
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.3s;
         }
-        .hero-btn:hover { background-color: var(--secondary); }
+        .btn-cta:hover { background-color: var(--secondary); transform: scale(1.05); }
 
-        /* --- FEATURES / USP --- */
-        .features { padding: 5rem 5%; background-color: var(--light); text-align: center; }
-        .features h2 { margin-bottom: 3rem; font-size: 2.5rem; }
-        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; }
-        .feature-card { padding: 2rem; background: var(--white); border-radius: 10px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .feature-icon { font-size: 2rem; margin-bottom: 1rem; display: block; }
-        .feature-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; font-family: 'Poppins', sans-serif; }
+        /* --- MENU SECTION --- */
+        .menu-section { padding: 4rem 5%; text-align: center; }
+        .section-title { font-size: 2rem; color: var(--primary); margin-bottom: 3rem; }
+        
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
 
-        /* --- PRODUCT CATALOG --- */
-        .products { padding: 5rem 5%; text-align: center; }
-        .products h2 { margin-bottom: 1rem; font-size: 2.5rem; }
-        .subtitle { color: #666; margin-bottom: 3rem; }
-        .product-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 3rem; }
-        .product-card {
-            background: var(--white); border-radius: 15px; overflow: hidden;
-            transition: 0.3s; border: 1px solid #eee; position: relative;
+        .menu-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
         }
-        .product-card:hover { transform: translateY(-10px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
-        .product-img { height: 250px; background-color: #ddd; position: relative; overflow: hidden; }
-        .product-img img { width: 100%; height: 100%; object-fit: cover; }
-        .product-info { padding: 1.5rem; text-align: left; }
-        .roast-tag {
-            font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px;
-            color: var(--accent); font-weight: 600;
+        .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            background-color: #ddd;
+            object-fit: cover;
         }
-        .product-price { font-size: 1.2rem; font-weight: 700; color: var(--primary); float: right; }
-        .btn-buy {
-            display: block; width: 100%; padding: 10px; margin-top: 15px;
-            background: var(--primary); color: white; text-align: center; border-radius: 5px; cursor: pointer; border: none; font-family: 'Poppins', sans-serif;
+        
+        .card-content { padding: 1.5rem; }
+        .menu-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--dark); }
+        .menu-price { color: var(--primary); font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: block; }
+        .btn-order {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: var(--dark);
+            color: var(--white);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
         }
-        .btn-buy:hover { background: var(--accent); }
-
-        /* --- TESTIMONIALS --- */
-        .testimonials { padding: 5rem 5%; background-color: var(--primary); color: var(--white); text-align: center; }
-        .testimonial-card { max-width: 700px; margin: 0 auto; }
-        .quote { font-size: 1.5rem; font-style: italic; font-family: 'Lora', serif; margin-bottom: 1.5rem; }
-        .author { font-weight: 600; letter-spacing: 1px; }
+        .btn-order:hover { background-color: var(--primary); }
 
         /* --- FOOTER --- */
-        footer { background-color: #2c1e12; color: #aaa; padding: 3rem 5%; text-align: center; }
-        .footer-content { margin-bottom: 2rem; }
-        .socials a { margin: 0 10px; font-size: 1.2rem; }
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+        footer a { text-decoration: underline; }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- MODAL (POPUP) --- */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+            justify-content: center;
+            align-items: center;
+        }
+        .modal-content {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 400px;
+            position: relative;
+        }
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #aaa;
+        }
+        .form-group { margin-bottom: 1rem; text-align: left; }
+        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .modal-title { margin-bottom: 1rem; color: var(--primary); }
+        .summary { background: #f4f4f4; padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; }
+
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .nav-links { display: none; } /* Simplified for demo */
-            .hero h1 { font-size: 2.5rem; }
+            .hero h1 { font-size: 2rem; }
         }
     </style>
 </head>
 <body>
 
-    <nav>
-        <div class="logo">KOPI NATIV.</div>
-        <ul class="nav-links">
-            <li><a href="#hero">Beranda</a></li>
-            <li><a href="#about">Tentang Kami</a></li>
-            <li><a href="#products">Produk</a></li>
-        </ul>
-        <a href="#products" class="btn-cta">Belanja Sekarang</a>
-    </nav>
+    <header>
+        <div class="logo">KOPI ZEE</div>
+        <a href="https://instagram.com/kopizee__" target="_blank" class="social-link">
+            Instagram: @kopizee__
+        </a>
+    </header>
 
-    <section class="hero" id="hero">
-        <h1>Awali Hari dengan Energi Murni</h1>
-        <p>Biji kopi pilihan dari dataran tinggi Gayo dan Toraja. Dipetik merah, disangrai segar, dikirim langsung ke pintu Anda.</p>
-        <a href="#products" class="hero-btn">Lihat Koleksi Kopi</a>
-    </section>
-
-    <section class="features" id="about">
-        <h2>Mengapa Kopi Nativ?</h2>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <span class="feature-icon">🌿</span>
-                <h3>100% Organik</h3>
-                <p>Ditanam tanpa pestisida berbahaya, menjaga kemurnian rasa dan kesehatan tanah.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🔥</span>
-                <h3>Fresh Roast</h3>
-                <p>Kami menyangrai kopi setiap minggu (Small Batch) untuk menjamin kesegaran aroma.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🤝</span>
-                <h3>Fair Trade</h3>
-                <p>Kami membeli langsung dari petani dengan harga yang lebih tinggi dari pasar.</p>
-            </div>
+    <section class="hero">
+        <div>
+            <h1>Temukan Rasa Kopi Sejati</h1>
+            <p>Racikan biji kopi pilihan dengan rasa otentik untuk menemani harimu.</p>
+            <a href="#menu" class="btn-cta">Pesan Sekarang</a>
         </div>
     </section>
 
-    <section class="products" id="products">
-        <h2>Pilihan Barista</h2>
-        <p class="subtitle">Temukan profil rasa yang sesuai dengan kepribadianmu.</p>
+    <section id="menu" class="menu-section">
+        <h2 class="section-title">Menu Favorit</h2>
         
-        <div class="product-grid">
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kopi Gayo">
-                </div>
-                <div class="product-info">
-                    <span class="roast-tag">Arabica • Medium Roast</span>
-                    <h3>Gayo Wine Process</h3>
-                    <p style="font-size:0.9rem; color:#666; margin: 10px 0;">Notes: Dark Chocolate, Spices, Fruity acid.</p>
-                    <span class="product-price">Rp 85.000</span>
-                    <button class="btn-buy" onclick="pesanWa('Gayo Wine')">Pesan via WhatsApp</button>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&q=60" alt="Kopi Susu Zee" class="card-img">
+                <div class="card-content">
+                    <h3 class="menu-title">Kopi Susu Zee (Signature)</h3>
+                    <span class="menu-price">Rp 18.000</span>
+                    <button class="btn-order" onclick="openOrderModal('Kopi Susu Zee (Signature)', '18000')">Pesan</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Kopi Toraja">
-                </div>
-                <div class="product-info">
-                    <span class="roast-tag">Arabica • Dark Roast</span>
-                    <h3>Toraja Sapan</h3>
-                    <p style="font-size:0.9rem; color:#666; margin: 10px 0;">Notes: Herbal, Caramel, Clean aftertaste.</p>
-                    <span class="product-price">Rp 90.000</span>
-                    <button class="btn-buy" onclick="pesanWa('Toraja Sapan')">Pesan via WhatsApp</button>
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=60" alt="Americano" class="card-img">
+                <div class="card-content">
+                    <h3 class="menu-title">Americano Classic</h3>
+                    <span class="menu-price">Rp 15.000</span>
+                    <button class="btn-order" onclick="openOrderModal('Americano Classic', '15000')">Pesan</button>
                 </div>
             </div>
 
-            <div class="product-card">
-                <div class="product-img">
-                    <img src="https://images.unsplash.com/photo-1582169296194-e9d648411dff?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="House Blend">
+            <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=60" alt="Vanilla Latte" class="card-img">
+                <div class="card-content">
+                    <h3 class="menu-title">Vanilla Latte</h3>
+                    <span class="menu-price">Rp 22.000</span>
+                    <button class="btn-order" onclick="openOrderModal('Vanilla Latte', '22000')">Pesan</button>
                 </div>
-                <div class="product-info">
-                    <span class="roast-tag">Robusta x Arabica</span>
-                    <h3>Nativ House Blend</h3>
-                    <p style="font-size:0.9rem; color:#666; margin: 10px 0;">Notes: Bold body, Nutty, Low Acidity.</p>
-                    <span class="product-price">Rp 75.000</span>
-                    <button class="btn-buy" onclick="pesanWa('House Blend')">Pesan via WhatsApp</button>
+            </div>
+
+             <div class="menu-card">
+                <img src="https://images.unsplash.com/photo-1517701604599-bb29b5c5090c?auto=format&fit=crop&w=500&q=60" alt="Hazelnut Coffee" class="card-img">
+                <div class="card-content">
+                    <h3 class="menu-title">Hazelnut Coffee</h3>
+                    <span class="menu-price">Rp 24.000</span>
+                    <button class="btn-order" onclick="openOrderModal('Hazelnut Coffee', '24000')">Pesan</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="testimonial-card">
-            <p class="quote">"Ini kopi lokal terbaik yang pernah saya coba tahun ini. Aroma Gayo Wine-nya benar-benar keluar saat diseduh V60. Pengiriman juga sangat cepat!"</p>
-            <p class="author">— Dimas, Home Brewer Jakarta</p>
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h3 class="modal-title">Lengkapi Pesanan</h3>
+            
+            <div class="summary">
+                <p><strong>Menu:</strong> <span id="modal-menu-name">-</span></p>
+                <p><strong>Harga:</strong> <span id="modal-menu-price">-</span></p>
+            </div>
+
+            <div class="form-group">
+                <label for="buyer-name">Nama Kamu</label>
+                <input type="text" id="buyer-name" placeholder="Contoh: Budi">
+            </div>
+
+            <div class="form-group">
+                <label for="buyer-address">Alamat Lengkap</label>
+                <textarea id="buyer-address" rows="3" placeholder="Contoh: Jl. Mawar No. 10, Jakarta"></textarea>
+            </div>
+
+            <button class="btn-cta" style="width: 100%; border:none; cursor:pointer;" onclick="sendToWhatsapp()">Kirim ke WhatsApp</button>
         </div>
-    </section>
+    </div>
 
     <footer>
-        <div class="footer-content">
-            <h3>KOPI NATIV.</h3>
-            <p>Menyeduh cerita dari setiap biji nusantara.</p>
-        </div>
-        <div class="socials">
-            <a href="#">Instagram</a>
-            <a href="#">Tokopedia</a>
-            <a href="#">Shopee</a>
-        </div>
-        <br>
-        <p>&copy; 2024 Kopi Nativ Indonesia. All rights reserved.</p>
+        <p>&copy; 2024 Kopi Zee. All rights reserved.</p>
+        <p>Follow us on Instagram <a href="https://instagram.com/kopizee__">@kopizee__</a></p>
     </footer>
 
     <script>
-        function pesanWa(produk) {
-            // Ganti nomor ini dengan nomor WhatsApp Anda
-            let nomorHP = "6281234567890"; 
-            let pesan = `Halo Admin Kopi Nativ, saya mau pesan ${produk}. Apakah stok masih ada?`;
+        // Data Admin
+        const adminPhone = "6281649332048"; 
+
+        // Variables to store current selection
+        let selectedMenu = "";
+        let selectedPrice = "";
+
+        // Function to open modal
+        function openOrderModal(menuName, price) {
+            selectedMenu = menuName;
+            selectedPrice = "Rp " + parseInt(price).toLocaleString('id-ID');
             
-            // Redirect ke API WhatsApp
-            window.open(`https://wa.me/${nomorHP}?text=${encodeURIComponent(pesan)}`, '_blank');
+            // Update modal display
+            document.getElementById('modal-menu-name').innerText = selectedMenu;
+            document.getElementById('modal-menu-price').innerText = selectedPrice;
+            
+            // Show modal
+            document.getElementById('orderModal').style.display = "flex";
+        }
+
+        // Function to close modal
+        function closeModal() {
+            document.getElementById('orderModal').style.display = "none";
+        }
+
+        // Close modal if clicking outside content
+        window.onclick = function(event) {
+            let modal = document.getElementById('orderModal');
+            if (event.target == modal) {
+                closeModal();
+            }
+        }
+
+        // Function to send data to WhatsApp
+        function sendToWhatsapp() {
+            let name = document.getElementById('buyer-name').value;
+            let address = document.getElementById('buyer-address').value;
+
+            if(name === "" || address === "") {
+                alert("Mohon lengkapi Nama dan Alamat terlebih dahulu.");
+                return;
+            }
+
+            // Format Pesan WhatsApp
+            // %0A adalah kode untuk baris baru (Enter) di URL
+            let message = `Halo Admin Kopi Zee, saya mau pesan:%0A%0A` +
+                          `☕ *Menu:* ${selectedMenu}%0A` +
+                          `💰 *Harga:* ${selectedPrice}%0A%0A` +
+                          `---------------------------%0A` +
+                          `👤 *Nama:* ${name}%0A` +
+                          `🏠 *Alamat:* ${address}%0A%0A` +
+                          `Mohon diproses ya, terima kasih!`;
+
+            // Buka WhatsApp
+            let url = `https://wa.me/${adminPhone}?text=${message}`;
+            window.open(url, '_blank');
         }
     </script>
 </body>
