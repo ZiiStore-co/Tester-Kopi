@@ -3,306 +3,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kopi Zee - Nikmati Setiap Tegukan</title>
+    <title>Kopi Zee - Daftar Menu Resmi</title>
     <style>
         /* --- RESET & BASIC STYLE --- */
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        body { background-color: #fcf9f2; color: #333; line-height: 1.6; }
-        a { text-decoration: none; color: inherit; }
-
+        body { background-color: #1a1a1a; color: #fff; line-height: 1.6; }
+        
         /* --- COLORS --- */
         :root {
-            --primary: #6f4e37; /* Coffee Brown */
-            --secondary: #cba277; /* Latte */
-            --light: #fcf9f2; /* Cream */
-            --dark: #2c1a12; /* Dark Roast */
-            --white: #ffffff;
+            --accent: #ffcc00; /* Kuning seperti di menu */
+            --dark-bg: #121212;
+            --card-bg: #222;
         }
 
-        /* --- HEADER --- */
         header {
-            background-color: var(--white);
-            padding: 1rem 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
-        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
-        .social-link { color: var(--primary); font-weight: 600; }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1497935586351-b67a49e012bf?ixlib=rb-1.2.1&auto=format&fit=crop&w=1351&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 80vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background-color: var(--dark-bg);
+            padding: 1.5rem;
             text-align: center;
-            color: var(--white);
-            padding: 0 20px;
+            border-bottom: 3px solid var(--accent);
         }
-        .hero h1 { font-size: 3rem; margin-bottom: 1rem; text-shadow: 2px 2px 4px rgba(0,0,0,0.5); }
-        .hero p { font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; }
-        .btn-cta {
-            background-color: var(--primary);
-            color: var(--white);
-            padding: 12px 30px;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        .btn-cta:hover { background-color: var(--secondary); transform: scale(1.05); }
+        .logo-text { color: var(--accent); font-size: 1.8rem; font-weight: bold; letter-spacing: 2px; }
 
-        /* --- MENU SECTION --- */
-        .menu-section { padding: 4rem 5%; text-align: center; }
-        .section-title { font-size: 2rem; color: var(--primary); margin-bottom: 3rem; }
+        .container { padding: 2rem 5%; max-width: 1200px; margin: auto; }
         
+        .section-title { 
+            color: var(--accent); 
+            text-transform: uppercase; 
+            border-bottom: 2px solid var(--accent); 
+            display: inline-block;
+            margin: 2rem 0 1.5rem 0;
+            font-size: 1.5rem;
+        }
+
+        /* --- MENU GRID --- */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
         }
 
-        .menu-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-            transition: transform 0.3s ease;
+        .menu-item {
+            background: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: 0.3s;
+            border: 1px solid #333;
         }
-        .menu-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1); }
+        .menu-item:hover { transform: scale(1.03); border-color: var(--accent); }
+        .item-name { display: block; font-weight: bold; margin-bottom: 0.5rem; font-size: 1.1rem; }
+        .item-price { display: block; color: var(--accent); font-weight: bold; margin-bottom: 1rem; }
         
-        .card-img {
-            width: 100%;
-            height: 200px;
-            background-color: #ddd;
-            object-fit: cover;
-        }
-        
-        .card-content { padding: 1.5rem; }
-        .menu-title { font-size: 1.2rem; font-weight: bold; margin-bottom: 0.5rem; color: var(--dark); }
-        .menu-price { color: var(--primary); font-weight: bold; font-size: 1.1rem; margin-bottom: 1rem; display: block; }
-        .btn-order {
-            display: block;
-            width: 100%;
-            padding: 10px;
-            background-color: var(--dark);
-            color: var(--white);
-            border: none;
+        .btn-pesan {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: 8px 20px;
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
-        }
-        .btn-order:hover { background-color: var(--primary); }
-
-        /* --- FOOTER --- */
-        footer {
-            background-color: var(--dark);
-            color: var(--white);
-            text-align: center;
-            padding: 2rem;
-            margin-top: 2rem;
-        }
-        footer a { text-decoration: underline; }
-
-        /* --- MODAL (POPUP) --- */
-        .modal {
-            display: none; /* Hidden by default */
-            position: fixed;
-            z-index: 1000;
-            left: 0;
-            top: 0;
             width: 100%;
-            height: 100%;
-            background-color: rgba(0,0,0,0.5);
-            justify-content: center;
-            align-items: center;
+        }
+        .btn-pesan:hover { background: var(--accent); color: #000; }
+
+        /* --- MODAL --- */
+        .modal {
+            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); justify-content: center; align-items: center;
         }
         .modal-content {
-            background-color: var(--white);
-            padding: 2rem;
-            border-radius: 10px;
-            width: 90%;
-            max-width: 400px;
-            position: relative;
+            background: #fff; color: #333; padding: 2rem; border-radius: 15px; width: 90%; max-width: 400px;
         }
-        .close-btn {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #aaa;
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: bold; margin-bottom: 5px; }
+        .form-group input, .form-group textarea { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
+        .btn-submit { 
+            background: #25d366; color: white; width: 100%; padding: 12px; border: none; 
+            border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 1rem;
         }
-        .form-group { margin-bottom: 1rem; text-align: left; }
-        .form-group label { display: block; margin-bottom: 5px; font-weight: bold; }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        .modal-title { margin-bottom: 1rem; color: var(--primary); }
-        .summary { background: #f4f4f4; padding: 10px; margin-bottom: 15px; border-radius: 5px; font-size: 0.9rem; }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero h1 { font-size: 2rem; }
-        }
+        .ig-link { margin-top: 2rem; display: block; color: var(--accent); text-align: center; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">KOPI ZEE</div>
-        <a href="https://instagram.com/kopizee__" target="_blank" class="social-link">
-            Instagram: @kopizee__
-        </a>
+        <div class="logo-text">KOPIZEE</div>
+        <p style="font-size: 0.9rem; color: #ccc;">Nikmati Sensasi Kopi & Camilan Spesial</p>
     </header>
 
-    <section class="hero">
-        <div>
-            <h1>Temukan Rasa Kopi Sejati</h1>
-            <p>Racikan biji kopi pilihan dengan rasa otentik untuk menemani harimu.</p>
-            <a href="#menu" class="btn-cta">Pesan Sekarang</a>
-        </div>
-    </section>
-
-    <section id="menu" class="menu-section">
-        <h2 class="section-title">Menu Favorit</h2>
+    <div class="container">
         
-        <div class="menu-grid">
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=500&q=60" alt="Kopi Susu Zee" class="card-img">
-                <div class="card-content">
-                    <h3 class="menu-title">Kopi Susu Zee (Signature)</h3>
-                    <span class="menu-price">Rp 18.000</span>
-                    <button class="btn-order" onclick="openOrderModal('Kopi Susu Zee (Signature)', '18000')">Pesan</button>
-                </div>
+        <h2 class="section-title">Makanan</h2>
+        <div class="menu-grid" id="makanan-list">
             </div>
 
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?auto=format&fit=crop&w=500&q=60" alt="Americano" class="card-img">
-                <div class="card-content">
-                    <h3 class="menu-title">Americano Classic</h3>
-                    <span class="menu-price">Rp 15.000</span>
-                    <button class="btn-order" onclick="openOrderModal('Americano Classic', '15000')">Pesan</button>
-                </div>
-            </div>
+        <h2 class="section-title">Minuman</h2>
+        <div class="menu-grid" id="minuman-list"></div>
 
-            <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=500&q=60" alt="Vanilla Latte" class="card-img">
-                <div class="card-content">
-                    <h3 class="menu-title">Vanilla Latte</h3>
-                    <span class="menu-price">Rp 22.000</span>
-                    <button class="btn-order" onclick="openOrderModal('Vanilla Latte', '22000')">Pesan</button>
-                </div>
-            </div>
+        <h2 class="section-title">Non Coffee</h2>
+        <div class="menu-grid" id="non-coffee-list"></div>
 
-             <div class="menu-card">
-                <img src="https://images.unsplash.com/photo-1517701604599-bb29b5c5090c?auto=format&fit=crop&w=500&q=60" alt="Hazelnut Coffee" class="card-img">
-                <div class="card-content">
-                    <h3 class="menu-title">Hazelnut Coffee</h3>
-                    <span class="menu-price">Rp 24.000</span>
-                    <button class="btn-order" onclick="openOrderModal('Hazelnut Coffee', '24000')">Pesan</button>
-                </div>
-            </div>
-        </div>
-    </section>
+        <a href="https://instagram.com/kopizee__" class="ig-link">Instagram: @kopizee__</a>
+    </div>
 
     <div id="orderModal" class="modal">
         <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h3 class="modal-title">Lengkapi Pesanan</h3>
+            <h3 style="margin-bottom:1rem; color:#6f4e37">Detail Pengiriman</h3>
+            <p id="summary" style="background:#f9f9f9; padding:10px; border-radius:5px; margin-bottom:1rem; font-size:0.9rem;"></p>
             
-            <div class="summary">
-                <p><strong>Menu:</strong> <span id="modal-menu-name">-</span></p>
-                <p><strong>Harga:</strong> <span id="modal-menu-price">-</span></p>
-            </div>
-
             <div class="form-group">
-                <label for="buyer-name">Nama Kamu</label>
-                <input type="text" id="buyer-name" placeholder="Contoh: Budi">
+                <label>Nama Penerima</label>
+                <input type="text" id="buyer-name" placeholder="Masukkan nama Anda">
             </div>
-
             <div class="form-group">
-                <label for="buyer-address">Alamat Lengkap</label>
-                <textarea id="buyer-address" rows="3" placeholder="Contoh: Jl. Mawar No. 10, Jakarta"></textarea>
+                <label>Alamat Lengkap</label>
+                <textarea id="buyer-address" rows="3" placeholder="Contoh: Jl. Sudirman No. 12, RT 01/02"></textarea>
             </div>
-
-            <button class="btn-cta" style="width: 100%; border:none; cursor:pointer;" onclick="sendToWhatsapp()">Kirim ke WhatsApp</button>
+            <button class="btn-submit" onclick="processOrder()">Kirim Pesanan (WhatsApp)</button>
+            <button onclick="closeModal()" style="width:100%; background:none; border:none; margin-top:10px; cursor:pointer; color:#888;">Batal</button>
         </div>
     </div>
 
-    <footer>
-        <p>&copy; 2024 Kopi Zee. All rights reserved.</p>
-        <p>Follow us on Instagram <a href="https://instagram.com/kopizee__">@kopizee__</a></p>
-    </footer>
-
     <script>
-        // Data Admin
-        const adminPhone = "6281649332048"; 
+        const adminWA = "6281649332048";
+        
+        const menuData = {
+            makanan: [
+                { name: "Indomie Goreng", price: "15.000" },
+                { name: "Sambosa", price: "10.000" },
+                { name: "Kentang Goreng", price: "10.000" },
+                { name: "Dimsum", price: "15.000" }
+            ],
+            minuman: [
+                { name: "Creambrulee", price: "13.000" },
+                { name: "Pandan", price: "13.000" },
+                { name: "Salted Caramel", price: "13.000" },
+                { name: "Cheesecake", price: "15.000" },
+                { name: "Hazelnut", price: "13.000" },
+                { name: "Palmsugar", price: "13.000" },
+                { name: "Butterscotch", price: "13.000" },
+                { name: "Tiramisu", price: "13.000" },
+                { name: "Vanilla", price: "13.000" },
+                { name: "Caramel", price: "13.000" }
+            ],
+            nonCoffee: [
+                { name: "Moctail Blue", price: "15.000" }
+            ]
+        };
 
-        // Variables to store current selection
-        let selectedMenu = "";
-        let selectedPrice = "";
+        let currentOrder = { name: "", price: "" };
 
-        // Function to open modal
-        function openOrderModal(menuName, price) {
-            selectedMenu = menuName;
-            selectedPrice = "Rp " + parseInt(price).toLocaleString('id-ID');
-            
-            // Update modal display
-            document.getElementById('modal-menu-name').innerText = selectedMenu;
-            document.getElementById('modal-menu-price').innerText = selectedPrice;
-            
-            // Show modal
-            document.getElementById('orderModal').style.display = "flex";
+        function renderMenu() {
+            const render = (items, elementId) => {
+                const container = document.getElementById(elementId);
+                items.forEach(item => {
+                    container.innerHTML += `
+                        <div class="menu-item">
+                            <span class="item-name">${item.name}</span>
+                            <span class="item-price">Rp ${item.price}</span>
+                            <button class="btn-pesan" onclick="openModal('${item.name}', '${item.price}')">PESAN</button>
+                        </div>
+                    `;
+                });
+            };
+
+            render(menuData.makanan, 'makanan-list');
+            render(menuData.minuman, 'minuman-list');
+            render(menuData.nonCoffee, 'non-coffee-list');
         }
 
-        // Function to close modal
+        function openModal(name, price) {
+            currentOrder = { name, price };
+            document.getElementById('summary').innerHTML = `Pesanan: <b>${name}</b><br>Harga: <b>Rp ${price}</b>`;
+            document.getElementById('orderModal').style.display = 'flex';
+        }
+
         function closeModal() {
-            document.getElementById('orderModal').style.display = "none";
+            document.getElementById('orderModal').style.display = 'none';
         }
 
-        // Close modal if clicking outside content
-        window.onclick = function(event) {
-            let modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        function processOrder() {
+            const buyerName = document.getElementById('buyer-name').value;
+            const buyerAddress = document.getElementById('buyer-address').value;
 
-        // Function to send data to WhatsApp
-        function sendToWhatsapp() {
-            let name = document.getElementById('buyer-name').value;
-            let address = document.getElementById('buyer-address').value;
-
-            if(name === "" || address === "") {
-                alert("Mohon lengkapi Nama dan Alamat terlebih dahulu.");
+            if (!buyerName || !buyerAddress) {
+                alert("Harap isi Nama dan Alamat!");
                 return;
             }
 
-            // Format Pesan WhatsApp
-            // %0A adalah kode untuk baris baru (Enter) di URL
-            let message = `Halo Admin Kopi Zee, saya mau pesan:%0A%0A` +
-                          `☕ *Menu:* ${selectedMenu}%0A` +
-                          `💰 *Harga:* ${selectedPrice}%0A%0A` +
-                          `---------------------------%0A` +
-                          `👤 *Nama:* ${name}%0A` +
-                          `🏠 *Alamat:* ${address}%0A%0A` +
-                          `Mohon diproses ya, terima kasih!`;
-
-            // Buka WhatsApp
-            let url = `https://wa.me/${adminPhone}?text=${message}`;
-            window.open(url, '_blank');
+            const text = `Halo Admin KopiZee,%0A%0ASaya ingin memesan:%0A✅ *Menu:* ${currentOrder.name}%0A💰 *Harga:* Rp ${currentOrder.price}%0A%0A--- DATA PEMBELI ---%0A👤 *Nama:* ${buyerName}%0A🏠 *Alamat:* ${buyerAddress}%0A%0AMohon segera diproses ya. Terima kasih!`;
+            
+            window.open(`https://wa.me/${adminWA}?text=${text}`, '_blank');
         }
+
+        window.onload = renderMenu;
     </script>
 </body>
 </html>
