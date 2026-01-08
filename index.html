@@ -9,8 +9,8 @@
         /* --- SISTEM DESAIN --- */
         :root {
             --primary: #c8a97e; 
-            --dark: #120c08;    
-            --medium: #1e150e;  
+            --dark: #1a120b;    
+            --medium: #2c1e14;  
             --light: #f5ece2;   
             --text-light: #ece0d1;
             --wa-green: #25d366; 
@@ -27,41 +27,34 @@
             background-color: var(--dark); 
             color: var(--text-light); 
             line-height: 1.6;
-            background-image: radial-gradient(circle at top, #2c1e14 0%, #120c08 100%);
-            background-attachment: fixed;
+            background-image: radial-gradient(circle at 10% 20%, rgba(44, 30, 20, 0.5) 0%, rgba(26, 18, 11, 0.5) 100%);
         }
 
         /* --- HEADER --- */
         header {
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.8)), 
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
                         url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&q=80&w=1000');
             background-size: cover;
             background-position: center;
-            padding: 6rem 1rem;
+            padding: 5rem 1rem;
             text-align: center;
-            border-bottom: 2px solid rgba(200, 169, 126, 0.3);
+            border-bottom: 4px solid var(--primary);
         }
 
         .logo-text { 
             font-family: 'Playfair Display', serif;
             color: var(--primary); 
-            font-size: 4rem; 
+            font-size: clamp(2.5rem, 8vw, 4rem); 
             font-weight: bold; 
-            letter-spacing: 6px;
-            text-shadow: 3px 3px 10px rgba(0,0,0,0.8);
+            letter-spacing: 4px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
             margin-bottom: 0.5rem;
-            text-transform: uppercase;
         }
 
         header p {
-            font-size: 1rem;
+            font-size: 1.1rem;
             color: var(--light);
-            letter-spacing: 3px;
-            font-weight: 300;
-            background: rgba(0,0,0,0.3);
-            display: inline-block;
-            padding: 5px 20px;
-            border-radius: 50px;
+            letter-spacing: 2px;
         }
 
         /* --- CONTAINER --- */
@@ -75,325 +68,8 @@
             font-family: 'Playfair Display', serif;
             color: var(--primary); 
             text-align: center;
-            margin: 5rem 0 3rem 0;
-            font-size: 2.5rem;
-        }
-
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 50px;
-            height: 3px;
-            background: var(--primary);
-            margin: 15px auto;
-            border-radius: 2px;
-        }
-
-        /* --- MENU GRID --- */
-        .menu-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2.5rem;
-        }
-
-        .menu-item {
-            background: rgba(44, 30, 20, 0.4);
-            padding: 2rem;
-            border-radius: 24px;
-            text-align: center;
-            transition: all 0.4s ease;
-            border: 1px solid rgba(200, 169, 126, 0.15);
-            backdrop-filter: blur(10px);
-        }
-
-        .menu-item:hover { 
-            transform: translateY(-12px); 
-            border-color: var(--primary); 
-            background: rgba(44, 30, 20, 0.7);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-        }
-
-        .item-name { 
-            display: block; 
-            font-weight: 600; 
-            margin-bottom: 0.5rem; 
-            font-size: 1.3rem; 
-            color: #fff;
-        }
-
-        .item-price { 
-            display: block; 
-            color: var(--primary); 
-            font-weight: 400; 
-            margin-bottom: 1.5rem; 
-            font-size: 1.1rem;
-            letter-spacing: 1px;
-        }
-        
-        .btn-pesan {
-            background: transparent;
-            color: var(--primary);
-            border: 1.5px solid var(--primary);
-            padding: 12px 25px;
-            border-radius: 50px;
-            cursor: pointer;
-            font-weight: 600;
-            width: 100%;
-            transition: 0.3s;
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 1px;
-        }
-
-        .btn-pesan:hover { 
-            background: var(--primary);
-            color: var(--dark);
-        }
-
-        /* --- INSTAGRAM SECTION --- */
-        .social-section {
-            text-align: center;
-            margin: 6rem 0 4rem 0;
-            padding: 3rem;
-            background: rgba(200, 169, 126, 0.05);
-            border-radius: 30px;
-        }
-
-        .ig-icon-link {
-            text-decoration: none;
-            display: inline-block;
-            transition: 0.3s;
-        }
-
-        .ig-logo {
-            width: 50px;
-            margin-bottom: 10px;
-        }
-
-        .social-text {
-            display: block;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        /* --- MODAL --- */
-        .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.9); backdrop-filter: blur(8px); justify-content: center; align-items: center;
-        }
-        .modal-content {
-            background: #fff; color: var(--dark); padding: 2.5rem; border-radius: 30px; width: 90%; max-width: 400px;
-            animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        @keyframes modalPop {
-            from { opacity: 0; transform: scale(0.8); }
-            to { opacity: 1; transform: scale(1); }
-        }
-        .form-group { margin-bottom: 1.5rem; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.85rem; color: #555; }
-        .form-group input, .form-group textarea { 
-            width: 100%; padding: 14px; border: 1.5px solid #eee; border-radius: 12px; font-size: 1rem; outline: none; transition: 0.3s;
-        }
-        .form-group input:focus { border-color: var(--primary); }
-
-        .btn-submit { 
-            background: var(--wa-green); color: white; width: 100%; padding: 16px; border: none; 
-            border-radius: 15px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.3s;
-            display: flex; align-items: center; justify-content: center; gap: 10px;
-        }
-        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4); }
-
-        footer {
-            text-align: center;
-            padding: 3rem;
-            font-size: 0.8rem;
-            color: #555;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* --- ANIMASI --- */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .menu-item { animation: fadeInUp 0.6s ease both; }
-    </style>
-</head>
-<body>
-
-    <header>
-        <div class="logo-text">KOPI ZEE</div>
-        <p>OPEN 16:00 - 00:00</p>
-    </header>
-
-    <div class="container">
-        
-        <h2 class="section-title">Menu Kopi</h2>
-        <div class="menu-grid" id="minuman-list"></div>
-
-        <h2 class="section-title">Camilan Santai</h2>
-        <div class="menu-grid" id="makanan-list"></div>
-
-        <h2 class="section-title">Non-Kopi</h2>
-        <div class="menu-grid" id="noncoffee-list"></div>
-
-        <div class="social-section">
-            <a href="https://instagram.com/kopizee__" class="ig-icon-link" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Kopi Zee" class="ig-logo">
-                <span class="social-text">@kopizee__</span>
-            </a>
-        </div>
-    </div>
-
-    <footer>
-        &copy; 2025 KopiZee. Dibuat dengan Kecintaan pada Kopi.
-    </footer>
-
-    <div id="orderModal" class="modal">
-        <div class="modal-content">
-            <h2 style="font-family: 'Playfair Display'; margin-bottom: 1rem; text-align: center;">Konfirmasi Pesanan</h2>
-            <div id="summary" style="background:#f9f5f0; padding:15px; border-radius:15px; margin-bottom:1.5rem; font-size:0.95rem; border-left: 5px solid var(--primary);"></div>
-            
-            <div class="form-group">
-                <label>Nama Lengkap</label>
-                <input type="text" id="buyer-name" placeholder="Masukkan nama Anda">
-            </div>
-            <div class="form-group">
-                <label>Nomor Meja / Alamat</label>
-                <textarea id="buyer-address" rows="2" placeholder="Contoh: Meja 05 atau Alamat Lengkap"></textarea>
-            </div>
-            <button class="btn-submit" onclick="processOrder()">
-                Kirim ke WhatsApp
-            </button>
-            <button onclick="closeModal()" style="width:100%; background:none; border:none; margin-top:15px; cursor:pointer; color:#aaa; font-size: 0.85rem;">Batal & Kembali</button>
-        </div>
-    </div>
-
-    <script>
-        const adminWA = "6281649332048";
-        
-        const menuData = {
-            makanan: [
-                { name: "Indomie Goreng", price: "15.000" },
-                { name: "Sambosa", price: "10.000" },
-                { name: "Kentang Goreng", price: "10.000" },
-                { name: "Dimsum", price: "15.000" }
-            ],
-            minuman: [
-                { name: "Creambrulee Coffee", price: "13.000" },
-                { name: "Pandan Coffee", price: "13.000" },
-                { name: "Salted Caramel", price: "13.000" },
-                { name: "Cheesecake Coffee", price: "15.000" },
-                { name: "Hazelnut Latte", price: "13.000" },
-                { name: "Palmsugar Coffee", price: "13.000" },
-                { name: "Butterscotch", price: "13.000" },
-                { name: "Tiramisu Coffee", price: "13.000" },
-                { name: "Vanilla Latte", price: "13.000" },
-                { name: "Caramel Latte", price: "13.000" }
-            ],
-            nonCoffee: [
-                { name: "Mocktail Blue Ocean", price: "15.000" }
-            ]
-        };
-
-        function renderMenu() {
-            const render = (items, elementId) => {
-                const container = document.getElementById(elementId);
-                if(!container) return; // Safety check
-                
-                container.innerHTML = ""; // Clear existing
-                items.forEach((item, index) => {
-                    const delay = index * 0.1;
-                    container.innerHTML += `
-                        <div class="menu-item" style="animation-delay: ${delay}s">
-                            <span class="item-name">${item.name}</span>
-                            <span class="item-price">Rp ${item.price}</span>
-                            <button class="btn-pesan" onclick="openModal('${item.name}', '${item.price}')">Pesan</button>
-                        </div>
-                    `;
-                });
-            };
-
-            render(menuData.makanan, 'makanan-list');
-            render(menuData.minuman, 'minuman-list');
-            render(menuData.nonCoffee, 'noncoffee-list'); // FIXED: ID matches HTML
-        }
-
-        let currentOrder = { name: "", price: "" };
-
-        function openModal(name, price) {
-            currentOrder = { name, price };
-            document.getElementById('summary').innerHTML = `☕ <strong>${name}</strong><br>💰 <strong>Rp ${price}</strong>`;
-            document.getElementById('orderModal').style.display = 'flex';
-        }
-
-        function closeModal() {
-            document.getElementById('orderModal').style.display = 'none';
-        }
-
-        function processOrder() {
-            const buyerName = document.getElementById('buyer-name').value;
-            const buyerAddress = document.getElementById('buyer-address').value;
-
-            if (!buyerName || !buyerAddress) {
-                alert("Harap isi Nama dan Nomor Meja/Alamat!");
-                return;
-            }
-
-            const text = `Halo Admin KopiZee! 👋%0A%0ASaya ingin memesan:%0A☕ *Menu:* ${currentOrder.name}%0A💰 *Harga:* Rp ${currentOrder.price}%0A%0A--- DATA PEMBELI ---%0A👤 *Nama:* ${buyerName}%0A🏠 *Lokasi/Meja:* ${buyerAddress}%0A%0AMohon segera diproses ya, terima kasih! ✨`;
-            
-            window.open(`https://wa.me/${adminWA}?text=${text}`, '_blank');
-        }
-
-        window.onload = renderMenu;
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
-    </script>
-</body>
-</html>
-            background-size: cover;
-            background-position: center;
-            padding: 4rem 1rem;
-            text-align: center;
-            border-bottom: 4px solid var(--primary);
-        }
-
-        .logo-text { 
-            font-family: 'Playfair Display', serif;
-            color: var(--primary); 
-            font-size: 3.5rem; 
-            font-weight: bold; 
-            letter-spacing: 4px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-            margin-bottom: 0.5rem;
-        }
-
-        header p {
-            font-size: 1.1rem;
-            color: var(--light);
-            letter-spacing: 1px;
-            font-weight: 300;
-        }
-
-        /* --- CONTAINER --- */
-        .container { 
-            padding: 3rem 5%; 
-            max-width: 1100px; 
-            margin: auto; 
-        }
-        
-        .section-title { 
-            font-family: 'Playfair Display', serif;
-            color: var(--primary); 
-            text-align: center;
             margin: 4rem 0 2rem 0;
             font-size: 2.2rem;
-            position: relative;
         }
 
         .section-title::after {
@@ -408,8 +84,8 @@
         /* --- MENU GRID --- */
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 20px;
         }
 
         .menu-item {
@@ -417,20 +93,20 @@
             padding: 1.5rem;
             border-radius: 20px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: 0.3s;
             border: 1px solid rgba(200, 169, 126, 0.1);
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .menu-item:hover { 
-            transform: translateY(-10px); 
+            transform: translateY(-5px); 
             border-color: var(--primary); 
             box-shadow: 0 10px 20px rgba(0,0,0,0.4);
         }
 
         .item-name { 
-            display: block; 
             font-weight: 600; 
             margin-bottom: 0.5rem; 
             font-size: 1.2rem; 
@@ -438,7 +114,6 @@
         }
 
         .item-price { 
-            display: block; 
             color: var(--primary); 
             font-weight: bold; 
             margin-bottom: 1.5rem; 
@@ -449,76 +124,74 @@
             background: var(--primary);
             color: var(--dark);
             border: none;
-            padding: 12px 25px;
+            padding: 12px;
             border-radius: 30px;
             cursor: pointer;
             font-weight: 600;
-            width: 100%;
             transition: 0.3s;
             text-transform: uppercase;
-            font-size: 0.85rem;
         }
 
         .btn-pesan:hover { 
             background: #fff;
-            transform: scale(1.05);
         }
 
-        /* --- INSTAGRAM SECTION --- */
+        /* --- SOSIAL MEDIA --- */
         .social-section {
             text-align: center;
-            margin: 5rem 0 2rem 0;
-        }
-
-        .ig-icon-link {
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .ig-icon-link:hover {
-            transform: scale(1.1);
+            margin: 5rem 0;
         }
 
         .ig-logo {
-            width: 60px; /* Ukuran logo Instagram */
-            height: auto;
-            filter: drop-shadow(0 4px 8px rgba(0,0,0,0.3));
+            width: 50px;
+            margin-bottom: 10px;
         }
 
         .social-text {
             display: block;
-            margin-top: 10px;
             color: var(--primary);
+            text-decoration: none;
             font-weight: 600;
-            font-size: 0.9rem;
         }
 
         /* --- MODAL --- */
         .modal {
-            display: none; position: fixed; z-index: 1000; left: 0; top: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.85); backdrop-filter: blur(5px); justify-content: center; align-items: center;
+            display: none; 
+            position: fixed; 
+            z-index: 1000; 
+            left: 0; top: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.9); 
+            backdrop-filter: blur(8px); 
+            justify-content: center; 
+            align-items: center;
+            padding: 20px;
         }
+
         .modal-content {
-            background: var(--light); color: var(--dark); padding: 2.5rem; border-radius: 25px; width: 90%; max-width: 450px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+            background: var(--light); 
+            color: var(--dark); 
+            padding: 2rem; 
+            border-radius: 25px; 
+            width: 100%; 
+            max-width: 450px;
         }
-        .form-group { margin-bottom: 1.2rem; }
-        .form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; }
+
+        .form-group { margin-bottom: 1rem; }
+        .form-group label { display: block; font-weight: 600; margin-bottom: 5px; }
         .form-group input, .form-group textarea { 
-            width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 10px; font-size: 1rem;
+            width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 10px; font-size: 1rem;
         }
+
         .btn-submit { 
-            background: var(--wa-green); color: white; width: 100%; padding: 14px; border: none; 
-            border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 1rem; transition: 0.3s;
+            background: var(--wa-green); color: white; width: 100%; padding: 15px; border: none; 
+            border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px;
         }
-        .btn-submit:hover { opacity: 0.9; transform: translateY(-2px); }
 
         footer {
             text-align: center;
-            padding: 2rem;
+            padding: 3rem;
             font-size: 0.8rem;
             color: #666;
-            background: #111;
         }
 
         /* --- ANIMASI --- */
@@ -526,7 +199,7 @@
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        .menu-item { animation: fadeInUp 0.5s ease backwards; }
+        .menu-item { animation: fadeInUp 0.6s ease both; }
     </style>
 </head>
 <body>
@@ -537,7 +210,6 @@
     </header>
 
     <div class="container">
-        
         <h2 class="section-title">Menu Kopi</h2>
         <div class="menu-grid" id="minuman-list"></div>
 
@@ -545,35 +217,35 @@
         <div class="menu-grid" id="makanan-list"></div>
 
         <h2 class="section-title">Non-Kopi</h2>
-        <div class="menu-grid" id="noncoffee-list"></div>
+        <div class="menu-grid" id="non-coffee-list"></div>
 
         <div class="social-section">
-            <a href="https://instagram.com/kopizee__" class="ig-icon-link" target="_blank">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="Instagram Kopi Zee" class="ig-logo">
+            <a href="https://instagram.com/kopizee__" target="_blank" style="text-decoration: none;">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="IG" class="ig-logo">
                 <span class="social-text">@kopizee__</span>
             </a>
         </div>
     </div>
 
     <footer>
-        &copy; 2025 KopiZee. Dibuat dengan Kecintaan pada Kopi.
+        &copy; 2026 KopiZee. Dibuat dengan Kecintaan pada Kopi.
     </footer>
 
     <div id="orderModal" class="modal">
         <div class="modal-content">
-            <h2 style="font-family: 'Playfair Display'; margin-bottom: 0.5rem;">Konfirmasi Pesanan</h2>
-            <div id="summary" style="background:#ede4d9; padding:15px; border-radius:12px; margin-bottom:1.5rem; font-size:0.95rem; border-left: 4px solid var(--primary);"></div>
+            <h2 style="font-family: 'Playfair Display';">Konfirmasi Pesanan</h2>
+            <div id="summary" style="background:#eaddcf; padding:15px; border-radius:12px; margin: 15px 0; border-left: 5px solid var(--primary);"></div>
             
             <div class="form-group">
                 <label>Nama Anda</label>
-                <input type="text" id="buyer-name" placeholder="Siapa nama Anda?">
+                <input type="text" id="buyer-name" placeholder="Masukkan nama...">
             </div>
             <div class="form-group">
-                <label>Alamat Pengirim</label>
-                <textarea id="buyer-address" rows="3" placeholder="Contoh: Jl. Merpati No. 5 atau Meja Nomor 3"></textarea>
+                <label>Alamat / Nomor Meja</label>
+                <textarea id="buyer-address" rows="2" placeholder="Contoh: Meja 5 / Jl. Mawar No 2"></textarea>
             </div>
-            <button class="btn-submit" onclick="processOrder()">Kirim Pesanan ke WhatsApp</button>
-            <button onclick="closeModal()" style="width:100%; background:none; border:none; margin-top:15px; cursor:pointer; color:#888; font-weight: 500;">Batal</button>
+            <button class="btn-submit" onclick="processOrder()">Kirim ke WhatsApp</button>
+            <button onclick="closeModal()" style="width:100%; background:none; border:none; margin-top:10px; cursor:pointer; color:#888;">Batal</button>
         </div>
     </div>
 
@@ -605,30 +277,26 @@
         };
 
         function renderMenu() {
-            const render = (items, elementId) => {
-                const container = document.getElementById(elementId);
-                items.forEach((item, index) => {
-                    const delay = index * 0.1;
-                    container.innerHTML += `
-                        <div class="menu-item" style="animation-delay: ${delay}s">
-                            <span class="item-name">${item.name}</span>
-                            <span class="item-price">Rp ${item.price}</span>
-                            <button class="btn-pesan" onclick="openModal('${item.name}', '${item.price}')">Pesan Sekarang</button>
-                        </div>
-                    `;
-                });
-            };
+            const generateHTML = (items) => items.map((item, index) => `
+                <div class="menu-item" style="animation-delay: ${index * 0.1}s">
+                    <div>
+                        <span class="item-name">${item.name}</span>
+                        <span class="item-price">Rp ${item.price}</span>
+                    </div>
+                    <button class="btn-pesan" onclick="openModal('${item.name}', '${item.price}')">Pesan</button>
+                </div>
+            `).join('');
 
-            render(menuData.makanan, 'makanan-list');
-            render(menuData.minuman, 'minuman-list');
-            render(menuData.nonCoffee, 'non-coffee-list');
+            document.getElementById('makanan-list').innerHTML = generateHTML(menuData.makanan);
+            document.getElementById('minuman-list').innerHTML = generateHTML(menuData.minuman);
+            document.getElementById('non-coffee-list').innerHTML = generateHTML(menuData.nonCoffee);
         }
 
-        let currentOrder = { name: "", price: "" };
+        let selectedItem = {};
 
         function openModal(name, price) {
-            currentOrder = { name, price };
-            document.getElementById('summary').innerHTML = `🛒 <strong>${name}</strong><br>💰 <strong>Rp ${price}</strong>`;
+            selectedItem = { name, price };
+            document.getElementById('summary').innerHTML = `<strong>${name}</strong><br>Harga: Rp ${price}`;
             document.getElementById('orderModal').style.display = 'flex';
         }
 
@@ -637,27 +305,20 @@
         }
 
         function processOrder() {
-            const buyerName = document.getElementById('buyer-name').value;
-            const buyerAddress = document.getElementById('buyer-address').value;
+            const name = document.getElementById('buyer-name').value;
+            const address = document.getElementById('buyer-address').value;
 
-            if (!buyerName || !buyerAddress) {
-                alert("Harap isi Nama dan Alamat pengiriman!");
+            if (!name || !address) {
+                alert("Mohon isi nama dan alamat/meja!");
                 return;
             }
 
-            const text = `Halo Admin KopiZee! 👋%0A%0ASaya ingin memesan:%0A☕ *Menu:* ${currentOrder.name}%0A💰 *Harga:* Rp ${currentOrder.price}%0A%0A--- DATA PEMBELI ---%0A👤 *Nama:* ${buyerName}%0A🏠 *Alamat/Meja:* ${buyerAddress}%0A%0AMohon segera diproses ya, terima kasih! ✨`;
-            
+            const text = `Halo Kopi Zee!%0A%0ASaya ingin memesan:%0A✅ *${selectedItem.name}*%0A💰 Harga: Rp ${selectedItem.price}%0A%0A*Data Pemesan:*%0A👤 Nama: ${name}%0A📍 Lokasi: ${address}%0A%0ATerima kasih!`;
             window.open(`https://wa.me/${adminWA}?text=${text}`, '_blank');
         }
 
         window.onload = renderMenu;
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('orderModal');
-            if (event.target == modal) {
-                closeModal();
-            }
-        }
+        window.onclick = (e) => { if(e.target.id === 'orderModal') closeModal(); }
     </script>
 </body>
 </html>
